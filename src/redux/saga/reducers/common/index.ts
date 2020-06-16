@@ -19,6 +19,7 @@ export default ( state = initialStateSetter, action: ActionParams ) => {
     // REQUEST ==> 一般不在这里使用
     case 'TRIGGER': {
       console.log('收到了请求');
+      console.log(action);
       return {
         ...state,
         retryTip: true,
