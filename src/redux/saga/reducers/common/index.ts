@@ -17,9 +17,7 @@ export default ( state = initialStateSetter, action: ActionParams ) => {
     // FAILURE ==> 失败的时候
     // FULFILL ==> 完成的时候
     // REQUEST ==> 一般不在这里使用
-    case 'TRIGGER': {
-      console.log('收到了请求');
-      console.log(action);
+    case setRetryTip.TRIGGER: {
       return {
         ...state,
         retryTip: true,

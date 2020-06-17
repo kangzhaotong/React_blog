@@ -5,11 +5,13 @@
  ***/
 import { combineReducers } from 'redux';
 import sagaReducer from './saga/reducers';
+import thunkReducer from './thunk/reducers';
 
 // combineReducers接受一个对象， 对象里面是一个一个的小的reducer
 // const obj = {a: 1, B: 2}
 const rootReducer = combineReducers({
   ...sagaReducer,
+  ...thunkReducer,
 });
 
 export default rootReducer;
