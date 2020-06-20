@@ -1,15 +1,20 @@
 import React, {
 } from 'react';
 import Router from './router';
+import { History } from 'history';
+import { ConnectedRouter } from 'connected-react-router';
 
-function App() {
+interface IApp {
+  history: History;
+}
 
+function App ({ history }: IApp)  {
 
 
   return (
-    <div className="App">
+    <ConnectedRouter history={history}>
       <Router />
-    </div>
+    </ConnectedRouter>
   );
 }
 

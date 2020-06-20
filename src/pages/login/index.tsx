@@ -6,7 +6,7 @@
 import React, {memo} from 'react';
 import { Redirect } from 'react-router-dom';
 import useActions from '../../hooks/useActions';
-import { loginAction } from '../../redux/saga/actions/user';
+import { loginAction, loginActionPromise } from '../../redux/saga/actions/user';
 import ParticlesBg from 'particles-bg';
 import LoginMain from './login-layout/LoginMain';
 
@@ -21,7 +21,7 @@ const Login: React.FC<IProps> = (props) => {
 
   const { isLogin, loading } = useSelector((state: IState) => state.user );
   const actions = useActions({
-    loginAction,
+    loginActionPromise,
   });
 
   // 如果登陆状态为已经登陆 （ true ） 就跳转到/路径下
@@ -33,7 +33,7 @@ const Login: React.FC<IProps> = (props) => {
         <div className='login-layout-header' />
         <LoginMain
           loading={loading}
-          fetch={actions.loginAction}
+          fetch={actions.loginActionPromise}
         />
         <div className='login-layout-footer' />
         {/*<ParticlesBg

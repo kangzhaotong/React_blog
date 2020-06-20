@@ -7,7 +7,10 @@
  * thunk 明天配置
  ***/
 import { createStore, applyMiddleware, compose } from 'redux';
+import { routinePromiseWatcherSaga } from 'redux-saga-routines';
 import createSagaMiddleware from 'redux-saga';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducer';
@@ -21,6 +24,8 @@ import rootSaga from './saga/sagas';
 * */
 
 
+export const history = createBrowserHistory();
+
 // saga 的中间件
 const sagaMiddleware = createSagaMiddleware();
 
@@ -31,8 +36,9 @@ const composeEnhancer =
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-const store = createStore(rootReducer, composeEnhancer(
+const store = createStore(rootReducer(history), composeEnhancer(
   applyMiddleware(
+    routerMiddleware(history),
     sagaMiddleware,
     thunk,
     logger,
@@ -40,6 +46,16 @@ const store = createStore(rootReducer, composeEnhancer(
 ));
 
 sagaMiddleware.run(rootSaga);
+
+
+/*
+// 我为了大家能够明了，
+* 为了方便在组件内部或者某个方法内部处理回调
+* 我们需要触发一个promise类型的action 所以需要routinePromiseWatcherSaga这个方法
+* 去帮助我们监听我们触发的每一个promise的action，
+实际上，routinePromiseWatcherSaga这个方法在内部，只是帮我们实现了一个返回promise的功能
+* */
+sagaMiddleware.run(routinePromiseWatcherSaga);
 
 
 export default store;

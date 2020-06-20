@@ -9,7 +9,7 @@ import React, {
 import { Form, Button, Input, notification } from 'antd';
 
 interface IProps {
-  fetch: (values: ILogin) => void;
+  fetch: (values: ILogin) => Promise<any>;
   loading: boolean;
 }
 
@@ -21,7 +21,7 @@ const LoginMain: React.FC<IProps> = (props) => {
   // values 是咱们这个表单的数据集合
   // 加入要给 某个表单项赋予初始值，就需要给它传递一个参数initialValues
   // 接受一个对象 键名就是 Item里边定义的name
-  const handleLogin = ( values: any ) => {
+  const handleLogin = async ( values: any ) => {
     if( !values.username || !values.password ) {
       notification.warn({
         message: '验证失败',
@@ -31,7 +31,24 @@ const LoginMain: React.FC<IProps> = (props) => {
       // 执行登录的逻辑
       // 希望成功登录 使用这个加密过后的密码
       // 51059a4712331fa67d5ea10854b477a6
-      fetch(values);
+
+      // 2020-06-20 补充说明
+      // 加入我们有这样的需求，我们希望在组件中去处理请求过后返回的数据，
+      // async await 用一个变量去接受await的值的话，
+      // 如果await后面是一个promise 那么 变量接收到的值就是成功的值，
+      // 如果该promise失败， 则程序会终止运行。
+      // 因为 async await 本身就是一个promise 它不能捕获自身的错误
+      // 所以我们一般是配合 try catch 使用，保证程序的正常运行。
+
+      // 如果套上了try catch
+      try {
+        const result = await fetch(values);
+        console.log('result-----------------', result);
+      } catch ( error ) {
+        console.log('result-----------------', error);
+      }
+
+
     }
 
   };

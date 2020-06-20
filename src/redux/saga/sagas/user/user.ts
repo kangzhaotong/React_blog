@@ -30,7 +30,7 @@ function* authorize (action: ActionParams<ILogin>) {
 
   } catch( error ) {
     // 错误的处理
-    yield put(loginAction.failure());
+    yield put(loginAction.failure(error));
   }
 }
 

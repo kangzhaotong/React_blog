@@ -28,7 +28,7 @@ export default function (state = initialStateSetter, action: ActionParams) {
       }
     }
     case loginAction.FAILURE: {
-      console.log('登录出错了');
+      console.log('登录出错了', action.payload);
       return {
         ...state,
         loading: false,
