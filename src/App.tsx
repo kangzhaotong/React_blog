@@ -1,6 +1,6 @@
 import React, {
 } from 'react';
-import Login from './pages/login';
+import Router from './router';
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <Login />
+      <Router />
     </div>
   );
 }

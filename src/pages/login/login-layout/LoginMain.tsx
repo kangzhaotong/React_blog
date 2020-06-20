@@ -29,6 +29,8 @@ const LoginMain: React.FC<IProps> = (props) => {
       })
     } else {
       // 执行登录的逻辑
+      // 希望成功登录 使用这个加密过后的密码
+      // 51059a4712331fa67d5ea10854b477a6
       fetch(values);
     }
 

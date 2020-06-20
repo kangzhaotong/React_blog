@@ -69,6 +69,7 @@ class Http {
         // 然后就是别的情况
         if( res.data.errorCode !== 0 ) {
           message.error(res.data.errMsg || '服务器异常');
+          return Promise.reject(res.data.errMsg);
         }
 
         // 如果还有别的逻辑 就在这里加就行了

@@ -1,7 +1,8 @@
+@import '../../assets/css/var';
 
 .login {
   height: 100%;
-  color: #fff;
+  color: @login-color;
   background: #2d2c2c;
 
   &-layout {
@@ -28,7 +29,7 @@
           font-size: 20px;
           line-height: 80px;
           text-align: center;
-          color: #fff;
+          color: @login-color;
         }
 
         &-box {
@@ -64,7 +65,7 @@
           }
 
           &_other {
-            color: #fff;
+            color: @login-color;
             p {
               position: relative;
               margin: 10px 0;
@@ -78,7 +79,7 @@
                 content: '';
                 width: 36%;
                 height: 1px;
-                background: #fff;
+                background: @login-color;
               }
               &:after {
                 // 伪类实现一些小功能的时候，一定要写 content 这个属性
@@ -88,7 +89,7 @@
                 content: '';
                 width: 36%;
                 height: 1px;
-                background: #fff;
+                background: @login-color;
               }
             }
 

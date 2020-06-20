@@ -5,13 +5,21 @@
  ***/
 import { loginAction } from '../../actions/user';
 
-const initialStateSetter = {
+const initialStateSetter: IUser = {
   isLogin: false,
+  loading: false,
 }
 
 export default function (state = initialStateSetter, action: ActionParams) {
 
   switch (action.type) {
+    case loginAction.TRIGGER: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+
     case loginAction.SUCCESS: {
       console.log('登录成功', action.payload);
       return {
@@ -23,6 +31,14 @@ export default function (state = initialStateSetter, action: ActionParams) {
       console.log('登录出错了');
       return {
         ...state,
+        loading: false,
+      }
+    }
+
+    case loginAction.FULFILL: {
+      return {
+        ...state,
+        loading: false,
       }
     }
 
