@@ -12,7 +12,7 @@ export default [
     // 路由鉴权 不管什么情况，都是需要走这个组件的 都是必须先过这个组件的关卡
 
     component: Auth,
-    routers: [
+    routes: [
       {
         // 1级级路由
         component: Dashboard,
@@ -23,7 +23,7 @@ export default [
       {
         // 1级级路由
         component: Login,
-        path: '/dashboard',
+        path: '/login',
       },
 
       // 还有一个404 的页面，
@@ -33,21 +33,21 @@ export default [
         icon: '',
         name: '博客管理',
         path: '/article-manage',
-        routers: [
+        routes: [
           {
             // 2级级路由
             component: RouteWithSubRouters,
             icon: '',
             name: '标签管理',
             path: '/tag',
-            routers: [
+            routes: [
               {
                 // 3级级路由
                 component: RouteWithSubRouters,
                 icon: '',
                 name: '标签列表',
                 path: '/list',
-                routers: [
+                routes: [
                   {
                     // 4级级路由
                     component: Tag,
@@ -68,14 +68,14 @@ export default [
             icon: '',
             name: '文章管理',
             path: '/article',
-            routers: [
+            routes: [
               {
                 // 3级级路由
                 component: RouteWithSubRouters,
                 icon: '',
                 name: '文章列表',
                 path: '/list',
-                routers: [
+                routes: [
                   {
                     // 4级级路由
                     component: Article,
@@ -99,21 +99,21 @@ export default [
         icon: '',
         name: '个人中心', // 因为个人中心有很多模块: 记账系统， plan模块, 知识管理
         path: '/person',
-        routers: [
+        routes: [
           {
             // 2级级路由
             component: RouteWithSubRouters,
             icon: '',
             name: '记账系统',
             path: '/account',
-            routers: [
+            routes: [
               {
                 // 3级级路由
                 component: RouteWithSubRouters,
                 icon: '',
                 name: '账务列表',
                 path: '/list',
-                routers: [
+                routes: [
                   {
                     // 4级级路由
                     component: Tag,
@@ -128,14 +128,14 @@ export default [
             icon: '',
             name: '规划管理',
             path: '/plan',
-            routers: [
+            routes: [
               {
                 // 3级级路由
                 component: RouteWithSubRouters,
                 icon: '',
                 name: '近期TODO',
                 path: '/list',
-                routers: [
+                routes: [
                   {
                     // 4级级路由
                     component: Tag,

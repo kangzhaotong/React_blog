@@ -77,6 +77,7 @@ class Http {
         return Promise.resolve(res.data);
       },
       (error: AxiosError) => {
+        console.log('是不是走的error')
         // 请求出错,走到这里的话,多半是服务器的问题
         // 先来处理多次请求失败的情况,
         const { config } = error;

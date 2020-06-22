@@ -32,6 +32,7 @@ function* authorize (action: ActionParams<ILogin>) {
     // 错误的处理
     yield put(loginAction.failure(error));
   }
+
 }
 
 // 异步请求进来过后， 首先会进入的是 effect副作用处理，

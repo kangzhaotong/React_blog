@@ -9,14 +9,11 @@ import { renderRoutes } from 'react-router-config';
 import config from './config';
 
 
-export default function () {
-
-  return (
-    <BrowserRouter>
-      {
-        renderRoutes( config )
-      }
-    </BrowserRouter>
-  )
-
-}
+const routes = (
+  <BrowserRouter>
+    {
+      renderRoutes( config )
+    }
+  </BrowserRouter>
+)
+export default routes;

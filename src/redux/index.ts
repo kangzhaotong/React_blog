@@ -36,12 +36,14 @@ const composeEnhancer =
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-const store = createStore(rootReducer(history), composeEnhancer(
-  applyMiddleware(
-    routerMiddleware(history),
-    sagaMiddleware,
-    thunk,
-    logger,
+const store = createStore(
+  rootReducer( history ),
+  composeEnhancer(
+    applyMiddleware(
+      routerMiddleware(history),
+      sagaMiddleware,
+      thunk,
+      logger,
   ),
 ));
 
